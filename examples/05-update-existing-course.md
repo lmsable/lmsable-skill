@@ -59,7 +59,7 @@ The response returns the block document from example 01 and a version hash.
 
 Blocks 1 (text) and the second accordion item do not mention either rule and stay exactly as they are.
 
-**7. Choose the write.** `edit_lesson_blocks` can change text fields such as `html`, `text` or `meta`, but not the lists inside `list`, `accordion`, `checklist` or `flashcards` (the server answers "Field "items" of a "accordion" block cannot be edited"). Because four of the six changes are inside such lists, write the whole lesson with `set_lesson_blocks`: the document from step 5 with only the changes from the table. Validate first:
+**7. Choose the write.** `edit_lesson_blocks` changes the text of existing content, but it cannot add a new item to a list or a checklist. Revision 3 adds a step to the list and a check to the checklist, so write the whole lesson with `set_lesson_blocks`: the document from step 5 with only the changes from the table. Validate first:
 
 ```json
 {
@@ -140,7 +140,7 @@ Blocks 1 (text) and the second accordion item do not mention either rule and sta
 }
 ```
 
-When every change is in a text field (for example, only the statement and the header changed), use `edit_lesson_blocks` instead: a `replace_text` on block 2 and a `set_field` on block 0 leave everything else untouched without resending the lesson.
+When the change only rewrites existing text and adds no items (for example, only the statement and the header changed), use `edit_lesson_blocks` instead: a `replace_text` on block 2 and a `set_field` on block 0 leave everything else untouched without resending the lesson.
 
 **8. Write it.** If validation passes, send the same call without `validate_only`. If the server reports a version mismatch, the author changed the lesson in the browser meanwhile: call `get_lesson` again, apply the same changes to the new content and the new version hash, and validate again. Never resend the document from step 5 after a mismatch, because it would overwrite the author's edits.
 
@@ -156,6 +156,6 @@ When every change is in a text field (for example, only the statement and the he
 
 - The order `ping` → `get_authoring_guide` → `list_courses` → `get_course` → `get_lesson` → write means no id is guessed and every write is checked against the live contract.
 - The table in step 6 finds the old rule in five blocks, not just the statement where it is most visible. An update that changed only the statement would leave the accordion and a flashcard teaching the old rule, and learners would get two different answers in one lesson.
-- The write method follows from what has to change: `set_lesson_blocks` when list items change, `edit_lesson_blocks` when only text fields change. In both cases everything the author did not ask to change stays exactly as it was.
+- The write method follows from what has to change: `set_lesson_blocks` when items have to be added to or removed from a list, `edit_lesson_blocks` when existing text only changes. In both cases everything the author did not ask to change stays exactly as it was.
 - `expected_version` and `validate_only` protect the author's work: a stale read cannot overwrite browser edits, and a contract error is caught before anything is written.
 - The update is reported as finished only when the whole course is consistent with revision 3, or the author knows exactly what is left.
