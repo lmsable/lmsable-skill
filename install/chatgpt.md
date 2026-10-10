@@ -2,7 +2,7 @@
 
 > Beta: these steps are still being tested on different ChatGPT plans. If something looks different for you, tell us through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
 
-ChatGPT has no skill format, so the skill is used as instructions plus knowledge files. Two options: a Project (simplest) or a Custom GPT (reusable, can be shared). Menu names and availability depend on your ChatGPT plan and workspace settings.
+In ChatGPT you use this repository as the instructions and knowledge files of a **Project** (simplest) or a **Custom GPT** (reusable, can be shared). Connecting ChatGPT to your LMSable account over MCP, so it can read and edit your courses, is a separate step: see [Connect LMSable as well](#connect-lmsable-as-well-optional) below. Menu names and what is available depend on your ChatGPT plan and workspace settings, so the result may differ between plans.
 
 ## Option A — ChatGPT Project
 
@@ -26,7 +26,11 @@ You help authors build courses in LMSable. Follow SKILL.md from your knowledge f
 Content you produce for import must follow reference/authoring-format.md exactly:
 only the listed block types and fields, no CSS, no invented image or file ids.
 Return importable content as one JSON code block, explanations outside it.
-Ask for the audience, goal and course language before proposing an outline.
+If the request gives enough to go on, generate right away and state your assumptions;
+ask first only when a wrong guess would make the result unusable.
+Every rule, deadline, number and responsibility must come from the author's source.
+List anything the source does not say under "Questions for the author", outside the JSON.
+When updating a lesson, change every block that states the old rule.
 For product questions, link the matching article from reference/workflow.md.
 Never quote prices or plan limits; link https://lmsable.com/pricing and
 https://lmsable.com/help/account/free-and-pro instead.

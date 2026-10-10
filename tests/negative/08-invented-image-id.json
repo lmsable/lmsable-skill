@@ -1,0 +1,1 @@
+{"kind":"blocks","expectError":"must not contain imageId","data":{"version":1,"blocks":[{"type":"image","imageId":"0123456789abcdef0123456789abcdef.png","caption":"x"}]}}

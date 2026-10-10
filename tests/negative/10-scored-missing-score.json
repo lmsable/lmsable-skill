@@ -1,0 +1,1 @@
+{"kind":"scenario","expectError":"score: 0 or 1 required","data":{"version":1,"mode":"scored","start":"a","nodes":[{"id":"a","title":"A","html":"","question":"Q?","answers":[{"text":"x","to":"end"},{"text":"y","to":"end","score":1}]},{"id":"end","ending":true,"title":"End","html":""}]}}

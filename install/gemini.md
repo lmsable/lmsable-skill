@@ -2,7 +2,7 @@
 
 > Beta: these steps are still being tested on different Google accounts and plans. If something looks different for you, tell us through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
 
-Gemini has no skill format, so the skill is used as the instructions of a Gem, with the reference files attached as knowledge. Availability of Gems and file uploads depends on your Google account and plan.
+In Gemini you use this repository as the instructions and knowledge files of a **Gem**. Whether Gems and file uploads are available, and how well they follow long instructions, depends on your Google account and plan, so the result may differ between plans.
 
 ## Create a Gem
 

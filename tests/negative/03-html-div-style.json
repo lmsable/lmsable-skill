@@ -1,0 +1,1 @@
+{"kind":"blocks","expectError":"tag <div> is not allowed","data":{"version":1,"blocks":[{"type":"text","html":"<div style=\"color:red\">x</div>"}]}}

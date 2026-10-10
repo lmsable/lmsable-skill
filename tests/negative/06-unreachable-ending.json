@@ -1,0 +1,1 @@
+{"kind":"scenario","expectError":"no ending is reachable","data":{"version":1,"start":"a","nodes":[{"id":"a","title":"A","html":"","question":"Q?","answers":[{"text":"x","to":"a"},{"text":"y","to":"a"}]},{"id":"end","ending":true,"title":"End","html":"","result":"positive"}]}}

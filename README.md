@@ -4,7 +4,7 @@ A knowledge pack that teaches your AI chat how [LMSable](https://lmsable.com) wo
 
 It works as a Claude Skill and as plain instructions for ChatGPT and Gemini.
 
-**Status: public beta (0.9.1).** The format and examples are checked against the live LMSable server; the ChatGPT and Gemini setup steps are still being tested. Feedback is welcome through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
+**Status: public beta (0.9.2).** The format and examples are checked against the live LMSable server; the ChatGPT and Gemini setup steps are still being tested. Feedback is welcome through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
 
 **Quick start for Claude:** download [lmsable-skill.zip](https://github.com/lmsable/lmsable-skill/releases/latest/download/lmsable-skill.zip) and upload it in Claude under **Customize → Skills** ([details](install/claude.md)).
 
@@ -19,6 +19,7 @@ It works as a Claude Skill and as plain instructions for ChatGPT and Gemini.
 | `examples/` | Five worked examples for a fictional company, Northwind Traders |
 | `install/` | Setup steps for Claude, ChatGPT and Gemini |
 | `tools/generate-reference.mjs` | Regenerates `reference/authoring-format.md` from a saved `get_authoring_guide` response |
+| `tools/check-examples.mjs` | Checks every JSON in `examples/` against the contract (block types and fields, limits, allowed HTML, quiz and scenario rules) and runs the negative cases in `tests/negative/`. Runs on every push |
 
 ## Install
 

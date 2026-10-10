@@ -50,7 +50,7 @@ Author's brief: audience — pickers, including temporary staff; goal — follow
           "title": "Scan the item, not the shelf",
           "type": "lesson",
           "time": "6 min",
-          "description": "The three common causes of wrong picks and the habits that prevent them: scan the item, check the rack level, never override a wrong-item alert."
+          "description": "The three causes of wrong picks, what Dallas changed, and the rules for pickers: scan the item, not the shelf label, and never override a wrong-item alert."
         },
         {
           "title": "Short-pick instead of guessing",
@@ -90,16 +90,16 @@ Author's brief: audience — pickers, including temporary staff; goal — follow
     },
     {
       "type": "text",
-      "html": "<p>Most wrong picks in Dallas came from three places. Each one has a simple habit that prevents it.</p>"
+      "html": "<p>Most wrong picks in Dallas came from three places, and Dallas changed something about each of them.</p>"
     },
     {
       "type": "table",
       "header": true,
       "rows": [
-        ["Where errors come from", "The habit that prevents it"],
-        ["Look-alike items stored next to each other", "Scan every item you pick"],
-        ["Skipping the scan when the scanner is slow", "Wait for the scan; the handheld will not confirm without it"],
-        ["Picking from the wrong rack level", "Check the level label before you reach"]
+        ["Where errors come from", "What changed in Dallas"],
+        ["Look-alike items stored next to each other", "Look-alikes are no longer stored side by side"],
+        ["Skipping the scan when the scanner is slow", "The scan is mandatory: the handheld will not confirm a pick without it"],
+        ["Picking from the wrong level of the rack", "Level labels were added to the racks"]
       ]
     },
     {
@@ -116,7 +116,7 @@ Author's brief: audience — pickers, including temporary staff; goal — follow
         },
         {
           "title": "Scanner is slow",
-          "html": "<p>Wait for it. A skipped scan is how look-alikes leave the building.</p>"
+          "html": "<p>The handheld will not confirm a pick without a scan, so skipping it is not an option.</p>"
         },
         {
           "title": "Item is not there",
@@ -220,7 +220,7 @@ Author's brief: audience — pickers, including temporary staff; goal — follow
 ## Why it works
 
 - The transcript is reorganized by what the picker has to do, not by the timeline of the talk; the Q&A answers end up where they are useful (a `hidden` block, quiz question 5).
-- The lesson uses a `table` for cause → habit, one `statement` for the key rule, `tabs` for three situations and a `quote` from the speaker — the presenter's own line is kept as a quote rather than rewritten.
+- The lesson uses a `table` for cause → what changed (both columns straight from the transcript), one `statement` for the key rule, `tabs` for three situations and a `quote` from the speaker — the presenter's own line is kept as a quote rather than rewritten.
 - The quiz mixes types as asked: two `single`, one `multi` (all-or-nothing scoring, so the prompt says "Select all that apply"), two `truefalse` with `answer` and no `options`.
 - Ids `q1`–`q5` match the pattern, each question has 2-6 options where options are allowed, and `timeLimitSeconds` is left out because a time limit was not requested.
 - Every quiz question is answerable from the lessons; none tests a detail that only appeared in the recording.

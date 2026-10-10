@@ -44,7 +44,7 @@ Author's brief: audience — new receiving clerks; goal — handle a damaged del
           "title": "Why damage reports matter",
           "type": "lesson",
           "time": "4 min",
-          "description": "Shows what Northwind loses when a damaged delivery is signed without a remark, and why the carrier rejects claims that lack evidence."
+          "description": "Explains why a carrier claim is usually rejected without a photo of the seal and a damage remark on the bill of lading."
         },
         {
           "title": "Check the seal and paperwork",
@@ -108,7 +108,7 @@ Author's brief: audience — new receiving clerks; goal — handle a damaged del
     },
     {
       "type": "text",
-      "html": "<p>The seal is the only proof that nobody opened the trailer between the shipper and our dock. If you break it without checking, Northwind cannot show where the damage happened, and the carrier can refuse the claim.</p>"
+      "html": "<p>Before you open a trailer, you check its seal against the paperwork and photograph it. A carrier claim without a photo of the seal and a remark on the bill of lading is usually rejected, so these first steps protect Northwind's claim.</p>"
     },
     {
       "type": "statement",
@@ -122,7 +122,7 @@ Author's brief: audience — new receiving clerks; goal — handle a damaged del
       "items": [
         "Find the seal number on the bill of lading (BOL).",
         "Compare it with the number on the seal itself.",
-        "Photograph the seal so the number is readable.",
+        "Photograph the seal.",
         "Photograph the trailer number.",
         "Only then break the seal and open the doors."
       ]
@@ -131,12 +131,12 @@ Author's brief: audience — new receiving clerks; goal — handle a damaged del
       "type": "accordion",
       "items": [
         {
-          "title": "The driver says he is late and cannot wait",
-          "html": "<p>The driver may wait or leave; you still do not open a trailer with a wrong or missing seal. Note the time and tell the shift lead.</p>"
+          "title": "There is no seal at all",
+          "html": "<p>A missing seal is handled like a wrong one: do not open the doors and call the shift lead.</p>"
         },
         {
-          "title": "The seal number differs by one digit",
-          "html": "<p>Treat it as a mismatch. Typos on the BOL happen, but only the shift lead can confirm it with the shipper.</p>"
+          "title": "Why photograph the seal before breaking it?",
+          "html": "<p>A carrier claim without a photo of the seal and a remark on the bill of lading is usually rejected.</p>"
         }
       ]
     },
@@ -165,10 +165,15 @@ Author's brief: audience — new receiving clerks; goal — handle a damaged del
 }
 ```
 
+**Questions for the author** (outside the JSON, nothing of this is in the lesson yet):
+
+- The procedure does not say what happens after you call the shift lead, or what to do if the driver will not wait. Should the lesson cover it? If so, what is the rule?
+- Is there a specific way to take the seal photo (device, app, where it is stored)?
+
 ## Why it works
 
 - The outline follows the order of the work on the dock, not the numbering of the PDF, and ends with a graded check (`"type": "quiz"`), which the Builder opens with the quiz editor attached.
 - Every `description` states what the learner will be able to do; the Builder uses it when it builds the prompt for that lesson.
 - The lesson is split into highlights: one `statement` for the stop rule, a numbered `list` for the sequence, an `accordion` for edge cases, a `checklist` and `flashcards` for recall — no single long `text` block.
 - Only block types and fields from the contract are used, HTML is limited to `p` and `strong`, and there are no images, so no ids had to be invented. Photos of the seal can be added later in the editor; their ids come from the upload.
-- Facts come from the source; the edge-case answers in the accordion are inferences and should be confirmed by the author before publishing.
+- Every rule in the lesson comes from WH-07: the accordion covers a case the procedure names (a missing seal) and the reason the procedure gives (claims without photos are rejected). Situations the procedure does not cover, such as a driver who will not wait, are asked about after the code block instead of being answered with an invented rule.

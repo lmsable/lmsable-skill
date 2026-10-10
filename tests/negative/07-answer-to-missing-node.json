@@ -1,0 +1,1 @@
+{"kind":"scenario","expectError":"is not an existing node","data":{"version":1,"start":"a","nodes":[{"id":"a","title":"A","html":"","question":"Q?","answers":[{"text":"x","to":"end"},{"text":"y","to":"nowhere"}]},{"id":"end","ending":true,"title":"End","html":""}]}}

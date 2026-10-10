@@ -1,0 +1,1 @@
+{"kind":"tool-args","expectError":"11 entries","data":{"course_uuid":"x","lesson_id":1,"ops":[{"op":"delete_block"},{"op":"delete_block"},{"op":"delete_block"},{"op":"delete_block"},{"op":"delete_block"},{"op":"delete_block"},{"op":"delete_block"},{"op":"delete_block"},{"op":"delete_block"},{"op":"delete_block"},{"op":"delete_block"}]}}
