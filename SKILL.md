@@ -65,6 +65,6 @@ A course has modules; a module has lessons. Each lesson holds exactly one kind o
 
 ## Version
 
-- Skill version: 0.9.0 (public beta)
+- Skill version: 0.9.1 (public beta)
 - Date: 2026-10-10
 - The live contract from `get_authoring_guide` always wins over this document.

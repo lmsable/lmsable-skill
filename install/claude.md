@@ -5,9 +5,12 @@ Two options: upload the folder as a Skill (recommended), or add the files to a C
 ## Option A — Claude Skill (web and desktop)
 
 1. Download the ready-made package: [lmsable-skill.zip](https://github.com/lmsable/lmsable-skill/releases/latest/download/lmsable-skill.zip) from the latest release. Do not unzip it: it already contains the `lmsable` folder with `SKILL.md`, `reference/` and `examples/`.
-2. In Claude, open the Skills settings (**Settings → Capabilities → Skills**; in some versions **Customize → Skills**). If Skills are switched off, switch them on (on Team and Enterprise plans an Owner may have to allow them first).
-3. Click **Upload skill** and choose `lmsable-skill.zip`.
-4. Check: start a new chat and ask "Using the LMSable skill, propose a table of contents for a 20-minute course on fire safety for warehouse staff." The answer should be one JSON block with `modules` and `lessons`.
+2. Make sure code execution is on: **Settings → Capabilities**. Skills need it.
+3. Open **Customize** in the sidebar and go to **Skills**.
+4. Click **+**, then **+ Create skill**, choose **Upload a skill** and select `lmsable-skill.zip`. On Team and Enterprise plans an Owner can turn skill uploads off; ask them if the option is missing.
+
+These steps follow Anthropic's guide [Use skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
+5. Check: start a new chat and ask "Using the LMSable skill, propose a table of contents for a 20-minute course on fire safety for warehouse staff." The answer should be one JSON block with `modules` and `lessons`.
 
 Claude loads the skill on its own when a conversation is about LMSable or course building. You can also mention it by name.
 
