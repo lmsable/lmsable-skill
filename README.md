@@ -4,7 +4,7 @@ A knowledge pack that teaches your AI chat how [LMSable](https://lmsable.com) wo
 
 It works as a Claude Skill and as plain instructions for ChatGPT and Gemini.
 
-**Status: public beta (0.9.4).** The format and examples are checked against the live LMSable server; the ChatGPT and Gemini setup steps are still being tested. Feedback is welcome through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
+**Status: public beta (0.9.5).** The format and examples are checked against the live LMSable server; the ChatGPT and Gemini setup steps are still being tested. Feedback is welcome through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
 
 **Quick start for Claude:** download [lmsable-skill.zip](https://github.com/lmsable/lmsable-skill/releases/latest/download/lmsable-skill.zip) and upload it in Claude under **Customize → Skills** ([details](install/claude.md)). Step-by-step guide for Claude, ChatGPT and Gemini in LMSable Help: [Use LMSable with your AI chat](https://lmsable.com/help/ai-chat/use-lmsable-with-your-ai-chat).
 

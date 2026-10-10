@@ -187,4 +187,42 @@ Every change to an existing lesson (set_lesson_*, edit_lesson_blocks, update_les
   right before you change it. A version mismatch means the author edited it meanwhile - read it again.
 set_lesson_* and edit_lesson_blocks accept validate_only: true - use it to check a large change
   before writing it.
+
+EDITING AN EXISTING LESSON (edit_lesson_blocks)
+
+edit_lesson_blocks makes up to 10 pointed changes in one call without resending the lesson.
+  Block indexes refer to the lesson as get_lesson returned it, before any of the changes.
+  {"op":"replace_text","block":0,"field":"<path>","find":"...","replace":"..."} - find must occur exactly once
+  {"op":"set_field","block":0,"field":"<path>","value":"..."}
+  {"op":"insert_block","after":0,"data":{...}} - after -1 inserts at the top; types: text, statement, quote, hidden, accordion, tabs, checklist, list, flashcards, header, table, divider
+  {"op":"delete_block","block":0} - ask the author first
+The field path names a field of the block. Items of a list are addressed by their index,
+  starting at 0: items[0].html, cards[1].back, items[2], rows[1][0], questions[0].options[1].
+Editable fields by block type (html = inline HTML, see HTML RULES A; plain text = no tags):
+    text         html (html)
+    statement    html (html)
+    quote        html (html), source (plain text)
+    hidden       html (html), label (plain text)
+    columns      left (html), right (html)
+    accordion    items[i].title (plain text), items[i].html (html)
+    tabs         items[i].title (plain text), items[i].html (html)
+    checklist    title (plain text), items[i] (plain text)
+    list         title (plain text), items[i] (plain text)
+    flashcards   cards[i].front (plain text), cards[i].back (plain text)
+    image        caption (plain text)
+    imagesection title (plain text), html (html)
+    continue     label (plain text)
+    slider       items[i].caption (plain text)
+    hotspot      spots[i].title (plain text), spots[i].html (html)
+    attachment   label (plain text)
+    video        caption (plain text)
+    audio        caption (plain text)
+    table        rows[r][c] (plain text)
+    divider      nothing
+    header       text (plain text), meta (plain text)
+    survey       title (plain text), intro (plain text), thanks (plain text), questions[i].text (plain text), questions[i].minLabel (plain text), questions[i].maxLabel (plain text), questions[i].options[j] (plain text)
+Only existing items can be changed. An item cannot be added, removed or reordered this way, and a
+  whole list ("items", "cards", "rows") cannot be replaced: rewrite the lesson with set_lesson_blocks,
+  starting from the document get_lesson returned and changing only what was asked.
+Images cannot be added with edit_lesson_blocks.
 ```

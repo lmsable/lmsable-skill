@@ -140,7 +140,24 @@ Blocks 1 (text) and the second accordion item do not mention either rule and sta
 }
 ```
 
-When the change only rewrites existing text and adds no items (for example, only the statement and the header changed), use `edit_lesson_blocks` instead: a `replace_text` on block 2 and a `set_field` on block 0 leave everything else untouched without resending the lesson.
+When the change only rewrites existing text and adds no items, use `edit_lesson_blocks` instead. Items inside a block are addressed by index from 0, so a single call can change the header, the statement, the first accordion item and the second flashcard and leave everything else untouched without resending the lesson. For example, if revision 3 had only changed who to call, the call would be (block indexes from the table in step 6; `find` must occur exactly once in that field):
+
+```json
+{
+  "course_uuid": "<course uuid from list_courses>",
+  "lesson_id": 1042,
+  "expected_version": "<version hash from get_lesson>",
+  "validate_only": true,
+  "ops": [
+    {"op": "set_field", "block": 0, "field": "meta", "value": "Procedure WH-07, revision 3 · Step 1 of 4"},
+    {"op": "replace_text", "block": 2, "field": "html", "find": "the shift lead", "replace": "the Inbound Control desk"},
+    {"op": "replace_text", "block": 4, "field": "items[0].html", "find": "the shift lead", "replace": "the Inbound Control desk"},
+    {"op": "set_field", "block": 6, "field": "cards[1].back", "value": "The Inbound Control desk. The doors stay closed until then."}
+  ]
+}
+```
+
+The editable fields of every block type are listed in the "EDITING AN EXISTING LESSON" section of `get_authoring_guide`. An index past the end of a list (for example `items[5]` in a five-item list) is refused with "does not exist", and a field the block type does not allow is refused with the list of fields that can be edited.
 
 **8. Write it.** If validation passes, send the same call without `validate_only`. If the server reports a version mismatch, the author changed the lesson in the browser meanwhile: call `get_lesson` again, apply the same changes to the new content and the new version hash, and validate again. Never resend the document from step 5 after a mismatch, because it would overwrite the author's edits.
 

@@ -56,7 +56,7 @@ Write (see plans above):
 | `create_course` | New course in the book format, optionally with a table of contents (every plan) |
 | `create_lesson` | Adds an empty lesson |
 | `set_lesson_blocks` | Replaces the whole block document of a lesson |
-| `edit_lesson_blocks` | Up to 10 pointed edits: replace text, set a field, insert or delete a block. It changes the text of existing content; it cannot add, remove or reorder items inside a `list`, `accordion`, `tabs`, `checklist`, `flashcards` or `table` block. For that, rewrite the lesson with `set_lesson_blocks` |
+| `edit_lesson_blocks` | Up to 10 pointed edits: replace text, set a field, insert or delete a block. `field` is a path inside the block, and list items are addressed by index from 0: `items[0].html` (accordion, tabs), `items[2]` (list, checklist), `cards[1].back` (flashcards), `rows[1][0]` (table). It changes existing content only; it cannot add, remove or reorder items. For that, rewrite the lesson with `set_lesson_blocks`. The full list of editable fields per block type is in the "EDITING AN EXISTING LESSON" section of `get_authoring_guide` (and `reference/authoring-format.md`) |
 | `set_lesson_interaction` | Writes a self-contained HTML interaction page |
 | `set_lesson_quiz` | Writes the quiz of a quiz or test lesson |
 | `set_lesson_scenario` | Writes the branching scenario of a scenario lesson |
