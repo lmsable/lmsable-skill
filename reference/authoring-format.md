@@ -1,6 +1,6 @@
 # LMSable authoring format
 
-Generated from the live `get_authoring_guide` MCP response on 2026-10-10. Do not edit by hand — regenerate instead.
+Generated from the live `get_authoring_guide` MCP response on 2026-10-16. Do not edit by hand — regenerate instead.
 
 ```text
 LMSABLE AUTHORING GUIDE
@@ -93,7 +93,7 @@ Dark mode: the platform does NOT inject its theme script into interaction pages.
 QUIZ
 
 Shape: {"version": 1, "settings": {...}, "questions": [...]}
-Questions: 1-40, each {id, type, text, options, feedback}. Types: single, multi, truefalse.
+Questions: 1-40, each {id, type, text, options, feedback}. Types: single, multi, truefalse, blanks, order, match.
 Options: 2-6 per question. Ids match /^[a-z0-9_-]{1,32}$/ and must be unique.
 Text limits: question 500, option 300, feedback 500 characters (all plain text).
 
@@ -104,7 +104,19 @@ Question fields:
   text      the question, required
   options   single/multi only: list of {"text": "...", "correct": true|false}
   feedback  optional {"correct": "...", "incorrect": "..."}
-Scoring: one point per question; multi is all-or-nothing.
+Scoring: one point per question; multi, blanks, order and match are all-or-nothing.
+
+Types blanks, order and match are behind a feature flag and refused on accounts without it.
+Each counts as ONE question towards the question limit. They have NO options field:
+  blanks    "body": text up to 1000 characters with 1-10 gaps written as *answer*; alternative
+            answers as *answer/other* (each up to 100 characters). Hints (*answer:hint*) are refused.
+            "mode": "type" (learner types; case and outer spaces ignored, accented letters must
+            match) or "pick" (learner taps words from a pool of answers plus distractors).
+            "distractors": optional list of 0-6 extra words for the pool, none equal to an answer.
+            "text" is the instruction, e.g. "Complete the sentence."
+  order     "items": 3-8 different strings in the CORRECT order (the player shuffles them).
+  match     "pairs": 3-8 objects {"left": "...", "right": "..."}; left and right sides unique.
+            Items and pair sides are plain text up to 300 characters.
 
 Settings (all optional):
   shuffleQuestions, shuffleAnswers  booleans (default true; true/false questions keep their order)
@@ -127,6 +139,12 @@ Example:
    "feedback": {"correct": "...", "incorrect": "..."}},
   {"id": "q2", "type": "truefalse", "text": "...", "answer": true}
  ]}
+Examples of the flagged types (questions only):
+  {"id": "q3", "type": "blanks", "text": "Complete the sentence.", "body": "Use at least *12/twelve* characters.",
+   "mode": "type", "distractors": []}
+  {"id": "q4", "type": "order", "text": "Put the steps in order.", "items": ["...", "...", "..."]}
+  {"id": "q5", "type": "match", "text": "Match the terms.",
+   "pairs": [{"left": "...", "right": "..."}, {"left": "...", "right": "..."}, {"left": "...", "right": "..."}]}
 
 SCENARIO
 
@@ -148,6 +166,16 @@ Answers: 2-5 per decision node, each {text, to, feedback (optional), score}.
 At least one ending must be reachable from start.
 Text limits: title 200, html 5000, question 300, answer 200, feedback 500 characters.
 Optional scenario-level imageStyle (plain text, max 400 characters) is used only by the editor's image prompts.
+
+Example:
+{"version": 1, "mode": "consequences", "start": "n1", "nodes": [
+  {"id": "n1", "title": "...", "html": "<p>...</p>", "question": "...", "answers": [
+    {"text": "...", "to": "n2", "feedback": "..."},
+    {"text": "...", "to": "end_good"}]},
+  {"id": "n2", "title": "...", "html": "<p>...</p>", "question": "...", "answers": [
+    {"text": "...", "to": "n1"}, {"text": "...", "to": "end_good"}]},
+  {"id": "end_good", "ending": true, "title": "...", "html": "<p>...</p>", "result": "positive"}
+]}
 
 NEW COURSE (create_course)
 
@@ -174,8 +202,8 @@ WHAT NOT TO DO
 WRITING THROUGH THIS SERVER
 
 The server has write tools: create_course, set_lesson_blocks, edit_lesson_blocks, set_lesson_interaction,
-  set_lesson_quiz, set_lesson_scenario, create_lesson, update_lesson_meta, reorder_lessons,
-  delete_lesson, restore_lesson_revision, resolve_review_comment and import_stock_photo.
+  set_lesson_quiz, set_lesson_scenario, set_slide_narration, create_lesson, update_lesson_meta,
+  reorder_lessons, delete_lesson, restore_lesson_revision, resolve_review_comment and import_stock_photo.
 Writing works on every plan and needs a token with the write scope. On the Free plan only the
   active course can be changed: the other courses are archived and writes to them are refused.
   create_course also works on every plan (the plan's course limit still applies).
@@ -187,6 +215,11 @@ Every change to an existing lesson (set_lesson_*, edit_lesson_blocks, update_les
   right before you change it. A version mismatch means the author edited it meanwhile - read it again.
 set_lesson_* and edit_lesson_blocks accept validate_only: true - use it to check a large change
   before writing it.
+set_slide_narration sets the narration script of one slide (type "slide"), when get_lesson returns
+  `narration` for it: plain text up to 3000 characters, spoken to the learner, without reading
+  the bullet points; transcript (boolean) shows it to learners as a transcript and captions. Its
+  expected_version is narration.version from get_lesson. It does not create audio: the author
+  generates, records or uploads it in the Course Builder.
 
 EDITING AN EXISTING LESSON (edit_lesson_blocks)
 

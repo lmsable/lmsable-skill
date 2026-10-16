@@ -13,6 +13,7 @@ Source of truth for product questions: the LMSable Help at https://lmsable.com/h
 
 - The user wants a course outline (table of contents) to import into the LMSable Course Builder.
 - The user wants lesson content, a quiz or a branching scenario for LMSable.
+- The user wants narration scripts for the slides of an LMSable presentation course.
 - The user turns existing material (a PDF procedure, a policy, a webinar transcript, onboarding documents) into a course.
 - The user has connected LMSable to the chat (MCP connector) and wants you to read or change a course.
 - The user asks how to do something in LMSable: import, review, export, upload to an LMS, plans.
@@ -67,6 +68,6 @@ A course has modules; a module has lessons. Each lesson holds exactly one kind o
 
 ## Version
 
-- Skill version: 0.9.5 (public beta)
-- Date: 2026-10-10
+- Skill version: 0.9.6 (public beta)
+- Date: 2026-10-16
 - The live contract from `get_authoring_guide` always wins over this document.

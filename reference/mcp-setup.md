@@ -44,7 +44,7 @@ Read:
 | `get_authoring_guide` | Returns the content contract the server validates against |
 | `list_courses` | Lists the account's courses with their ids |
 | `get_course` | Modules and lessons of one course (ids, types, empty or not) and the content brief |
-| `get_lesson` | Content of one lesson plus its `expected_version` |
+| `get_lesson` | Content of one lesson plus its `expected_version`; for a slide of a presentation course also `narration` (script, transcript setting, audio status and its own version) when narration is available on the account |
 | `list_lesson_revisions` | Stored previous versions of a lesson |
 | `list_review_comments` | Reviewer comments from review links, with the lesson and fragment they point at |
 | `search_stock_photos` | Searches free stock photos |
@@ -60,6 +60,7 @@ Write (see plans above):
 | `set_lesson_interaction` | Writes a self-contained HTML interaction page |
 | `set_lesson_quiz` | Writes the quiz of a quiz or test lesson |
 | `set_lesson_scenario` | Writes the branching scenario of a scenario lesson |
+| `set_slide_narration` | Writes the narration script of one slide (plain text, up to 3000 characters) and whether learners see it as a transcript. Pass `narration.version` from `get_lesson` as `expected_version`. It does not create audio: the author generates, records or uploads it in the Course Builder, and a changed script marks existing audio as out of date. Only on accounts with slide narration |
 | `update_lesson_meta` | Changes a lesson's title, section title or material type |
 | `reorder_lessons` | Changes the lesson order |
 | `delete_lesson` | Deletes a lesson (ask the author first) |
