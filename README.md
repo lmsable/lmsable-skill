@@ -2,11 +2,11 @@
 
 A knowledge pack that teaches your AI chat how [LMSable](https://lmsable.com) works and which format it accepts, so the course outlines, lessons, quizzes and scenarios it writes import into LMSable without rework.
 
-It works as a Claude Skill and as plain instructions for ChatGPT and Gemini.
+It works as a skill in Claude, ChatGPT (Work mode), Perplexity (Computer mode) and Gemini, and as notebook references in Microsoft Copilot.
 
-**Status: public beta (0.9.6).** The format and examples are checked against the live LMSable server; the ChatGPT and Gemini setup steps are still being tested. Feedback is welcome through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
+**Status: public beta (0.9.7).** The format and examples are checked against the live LMSable server. Tested on 2026-10-24 in Claude, ChatGPT (Work mode), Perplexity (Computer mode), Gemini (skill) and Microsoft Copilot (notebook): each wrote a table of contents from an attached PDF that imported first time. The LMSable connector for Perplexity works in the normal search mode (Perplexity Pro). Feedback is welcome through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
 
-**Quick start for Claude:** download [lmsable-skill.zip](https://github.com/lmsable/lmsable-skill/releases/latest/download/lmsable-skill.zip) and upload it in Claude under **Customize → Skills** ([details](install/claude.md)). Step-by-step guide for Claude, ChatGPT and Gemini in LMSable Help: [Use LMSable with your AI chat](https://lmsable.com/help/ai-chat/use-lmsable-with-your-ai-chat).
+**Quick start for Claude:** download [lmsable-skill.zip](https://github.com/lmsable/lmsable-skill/releases/latest/download/lmsable-skill.zip) and upload it in Claude under **Customize → Skills** ([details](install/claude.md)). Step-by-step guide for every chat in LMSable Help: [Use LMSable with your AI chat](https://lmsable.com/help/ai-chat/use-lmsable-with-your-ai-chat).
 
 ## What is in it
 
@@ -17,15 +17,17 @@ It works as a Claude Skill and as plain instructions for ChatGPT and Gemini.
 | `reference/mcp-setup.md` | Connecting LMSable to your chat (MCP) and the list of tools |
 | `reference/workflow.md` | Task → route in LMSable, with Help articles and videos |
 | `examples/` | Five worked examples for a fictional company, Northwind Traders |
-| `install/` | Setup steps for Claude, ChatGPT and Gemini |
+| `install/` | Setup steps for Claude, ChatGPT, Gemini, Perplexity and Microsoft Copilot |
 | `tools/generate-reference.mjs` | Regenerates `reference/authoring-format.md` from a saved `get_authoring_guide` response |
 | `tools/check-examples.mjs` | Checks every JSON in `examples/` against the contract (block types and fields, limits, allowed HTML, quiz and scenario rules) and runs the negative cases in `tests/negative/`. Runs on every push |
 
 ## Install
 
 - **Claude**: [install/claude.md](install/claude.md) — upload as a Skill, or add `SKILL.md` to a Project.
-- **ChatGPT**: [install/chatgpt.md](install/chatgpt.md) — Custom GPT or Project instructions.
-- **Gemini**: [install/gemini.md](install/gemini.md) — Gem instructions.
+- **ChatGPT**: [install/chatgpt.md](install/chatgpt.md) — upload the ZIP as a skill (Work mode), or Custom GPT / Project instructions.
+- **Gemini**: [install/gemini.md](install/gemini.md) — upload the unzipped folder as a skill, or a Gem.
+- **Microsoft Copilot**: [install/copilot.md](install/copilot.md) — skill files as notebook references.
+- **Perplexity**: [install/perplexity.md](install/perplexity.md) — upload the ZIP as a skill (Computer mode).
 
 To let the chat read and edit your courses directly, also connect LMSable: [reference/mcp-setup.md](reference/mcp-setup.md).
 
@@ -40,8 +42,8 @@ No. Without it you copy the prompt from the Course Builder into your chat and pa
 **Which plan do I need, and what does it cost?**
 See [lmsable.com/pricing](https://lmsable.com/pricing) and [Free and Pro: what is included](https://lmsable.com/help/account/free-and-pro). This repository does not list prices or limits because they change.
 
-**The import fails with a JSON error. What now?**
-Usually the answer was cut short or has extra text around it. Ask the chat to repeat the full JSON in one code block and paste it without changes. More in [Import the table of contents](https://lmsable.com/help/build/import-table-of-contents).
+**The import says the JSON is not valid. What now?**
+Most import errors come from how the answer was copied. Copy the code block with the copy button at its top, not the whole message, and paste it without changes. If LMSable says "That is not valid JSON", ask the chat to write the whole JSON in one code block and copy that block. If it says "The pasted answer is not complete JSON", the chat cut its answer short: ask it to send the complete answer again, or import a shorter outline. More in [Get the best results from your AI chat](https://lmsable.com/help/ai-chat/get-the-best-results-from-your-ai-chat) and [Import the table of contents](https://lmsable.com/help/build/import-table-of-contents).
 
 **Is this skill up to date with LMSable?**
 The format in `reference/authoring-format.md` is a snapshot with a date. When the chat is connected through MCP, the skill tells it to fetch the current format with `get_authoring_guide` first, so the live version is always used. New releases of this repository follow format changes.

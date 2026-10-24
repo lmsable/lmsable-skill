@@ -1,8 +1,18 @@
 # Use in ChatGPT
 
-> Beta: these steps are still being tested on different ChatGPT plans. If something looks different for you, tell us through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
+> Tested on ChatGPT Plus (October 2026). Menus can differ on other plans and in company workspaces. If something looks different for you, tell us through [LMSable Help](https://lmsable.com/help/account/contact-and-bug-reports).
 
-In ChatGPT you use this repository as the instructions and knowledge files of a **Project** (simplest) or a **Custom GPT** (reusable, can be shared). Connecting ChatGPT to your LMSable account over MCP, so it can read and edit your courses, is a separate step: see [Connect LMSable as well](#connect-lmsable-as-well-optional) below. Menu names and what is available depend on your ChatGPT plan and workspace settings, so the result may differ between plans.
+In ChatGPT you can upload the skill ZIP itself (Option S, recommended), or use this repository as the instructions and knowledge files of a **Project** or a **Custom GPT** (reusable, can be shared). Connecting ChatGPT to your LMSable account over MCP, so it can read and edit your courses, is a separate step: see [Connect LMSable as well](#connect-lmsable-as-well-optional) below. Menu names and what is available depend on your ChatGPT plan and workspace settings, so the result may differ between plans.
+
+## Option S — ChatGPT Skill (Work mode)
+
+1. Download [lmsable-skill.zip](https://github.com/lmsable/lmsable-skill/releases/latest/download/lmsable-skill.zip) from the latest release. Do not unzip it.
+2. In ChatGPT, open **Plugins** in the sidebar and switch to the **Skills** tab.
+3. Click **Add**, choose **Upload from your computer** and select `lmsable-skill.zip`. ChatGPT shows "Skill uploaded" and lists **lmsable** under **Installed**.
+4. Start a new conversation in **Work** mode (the switch above the message box). In normal **Chat** mode ChatGPT does not use the skill.
+5. Check: attach a document and ask for a table of contents to import in LMSable. ChatGPT says it uses the LMSable skill and answers with one JSON block with `modules` and `lessons`.
+
+To update, remove the old **lmsable** skill on the **Skills** tab and upload the new ZIP.
 
 ## Option A — ChatGPT Project
 

@@ -24,6 +24,7 @@ Routes:
 | Outline (table of contents) | Builder import (**Lessons** step) | Return the `{"modules": [...]}` JSON from `reference/authoring-format.md` (NEW COURSE section). Warn that importing replaces every existing lesson | [Import the table of contents](https://lmsable.com/help/build/import-table-of-contents) | [Import a table of contents from ChatGPT or Claude](https://youtu.be/xD84EuSvmgo) |
 | New course with outline from the chat | MCP `create_course` with `toc` | `list_courses` first, ask for the language, then `create_course`, then `get_course` | [What your AI can do](https://lmsable.com/help/ai-chat/edit-course-from-chat) | — |
 | Add, rename or reorder lessons in an existing course | Author in LMSable, or MCP `create_lesson`, `update_lesson_meta`, `reorder_lessons` | Propose the change; with MCP read the course first | [Import the table of contents](https://lmsable.com/help/build/import-table-of-contents), [Manage your courses](https://lmsable.com/help/build/manage-your-courses) | — |
+| Import fails / answer will not paste | Builder import | Tell the author to copy the code block with its copy button, not the whole message. Send the answer again as one `json` code block with nothing else inside it | [Get the best results from your AI chat](https://lmsable.com/help/ai-chat/get-the-best-results-from-your-ai-chat) | — |
 
 ## Write the lessons
 

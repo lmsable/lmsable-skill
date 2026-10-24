@@ -14,13 +14,34 @@ This is the method LMSable recommends, also for Claude Desktop.
 4. On the LMSable consent screen choose **Read only** or **Read and edit**, then **Allow**.
 5. Check: ask "List my LMSable courses".
 
+Claude asks for the author's approval each time it uses an LMSable tool, unless the author allows that tool permanently.
+
 Help: https://lmsable.com/help/ai-chat/connect-claude-web. For MCP clients without connector support: https://lmsable.com/help/ai-chat/connect-claude-desktop.
 
-## ChatGPT (beta, steps still being tested)
+## ChatGPT (web)
 
 ChatGPT on the web can add a custom MCP server with OAuth sign-in; the menu names have changed more than once and availability depends on the ChatGPT plan and workspace settings. In general: add a custom MCP server in ChatGPT's settings, use `https://lmsable.com/mcp` as the server URL with OAuth, complete the LMSable sign-in and consent screen, then ask "List my LMSable courses" in a new chat.
 
+Whether ChatGPT asks before a change depends on **Settings → Plugins → Default permission**. With **Allow low-risk tools** it writes to LMSable without asking. With **Allow read-only tools** or **Always ask** it asks before each change. The permission can also be set for LMSable alone in the same list.
+
 Help: https://lmsable.com/help/ai-chat/connect-chatgpt
+
+## Perplexity (Pro, web)
+
+A custom connector needs Perplexity Pro on the web (perplexity.ai); the free plan has no option to add one. In a company workspace an admin may have to allow custom connectors first.
+
+1. In Perplexity, open **Plugins** from the sidebar, click **Add custom** and choose **Add MCP connector**.
+2. Name it **LMSable** and paste `https://lmsable.com/mcp` as the MCP server URL. Leave the **Advanced** settings as they are: authentication **OAuth**, transport **Streamable HTTP**.
+3. Tick the box that confirms you understand the risk of custom connectors, click **Add**, then **Connect** on the page of the new connector.
+4. Sign in to LMSable with the code from your e-mail if asked.
+5. On the LMSable consent screen choose **Read only** or **Read and edit**, then **Allow**. Perplexity shows LMSable as **Connected**.
+6. Check: start a new search and ask "List my LMSable courses".
+
+If OAuth sign-in is not allowed or ends with an error (for example **invalid_redirect_uri**), use a token instead: create a connection on the **AI chat connection** screen in LMSable, then in Perplexity open **Advanced**, set **Authentication** to **API Key** and paste the token.
+
+The connector works in the normal search mode. Before every change to a lesson, Perplexity shows the JSON it is going to save and waits for the author to reply "yes".
+
+Help: https://lmsable.com/help/ai-chat/connect-perplexity
 
 ## Gemini (beta, steps still being tested)
 
